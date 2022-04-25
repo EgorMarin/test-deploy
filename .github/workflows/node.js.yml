@@ -21,7 +21,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm i
+      - name: Install dependecies
+        run: |
+          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
+          npm install
+          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/server
+          npm install
       - name: Build
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
