@@ -22,6 +22,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
           cache-dependency-path: "./server/package-lock.json"
+      - name: Run tests
+        run: |
+          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
+          npm run tests
       - name: Install client dependecies
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
@@ -34,5 +38,5 @@ jobs:
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/server
           npm install
-      - name: Restart nginx
-        run: sudo systemctl restart nginx
+      - name: Restart pm2
+        run: sudo pm2 restart all
