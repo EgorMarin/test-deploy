@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div>
       <h1 className="font-weight-light display-1 text-center">
-        Restaurant Finder Updated
+        Restaurant Finder New Updated
       </h1>
     </div>
   );
