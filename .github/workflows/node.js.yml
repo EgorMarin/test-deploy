@@ -35,7 +35,7 @@ jobs:
       - name: Build
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
-          npm run build --if-present
+          npm run build
 
   install-server-dependecies:
     runs-on: self-hosted
