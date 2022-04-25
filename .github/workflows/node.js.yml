@@ -33,7 +33,9 @@ jobs:
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
           npm install
       - name: Build
-        run: npm run build
+        run: |
+          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
+          npm run build
 
   install-server-dependecies:
     runs-on: self-hosted
