@@ -24,7 +24,6 @@ jobs:
       - run: npm i
       - name: Build
         run: |
-          cd ~
-          cd ./apps/test-deploy/client
+          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
           npm run build --if-present
       - run: sudo systemctl restart nginx
