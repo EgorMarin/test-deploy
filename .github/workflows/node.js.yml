@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  checkout:
     runs-on: self-hosted
 
     strategy:
@@ -22,14 +22,28 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
           cache-dependency-path: "./server/package-lock.json"
-      - name: Install dependecies
-        run: |
-          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
-          npm install
-          cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/server
-          npm install
-      - name: Build
+  
+  install-client-dependecies-and-build: 
+    runs-on: self-hosted
+    needs: checkout
+
+    steps:
+    - name: Install dependecies
+      run: |
+        cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
+        npm install
+    - name: Build
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
           npm run build --if-present
-      - run: sudo systemctl restart nginx
+  
+  install-server-dependecies: 
+    runs-on: self-hosted
+    needs: install-client-dependecies-and-build
+    
+    steps: 
+    - name: Install dependecies
+      run: |
+        cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/server
+        npm install
+    - run: sudo systemctl restart nginx
