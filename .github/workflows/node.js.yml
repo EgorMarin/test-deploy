@@ -39,4 +39,4 @@ jobs:
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/server
           npm install
       - name: Restart pm2
-        run: sudo pm2 restart all
+        run: pm2 restart all
