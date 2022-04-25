@@ -25,7 +25,7 @@ jobs:
       - name: Run tests
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
-          npm run tests
+          npm run test
       - name: Install client dependecies
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
