@@ -21,6 +21,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
+          cache-dependency-path: "./server/package-lock.json"
       - name: Install dependecies
         run: |
           cd /home/ubuntu/actions-runner/_work/test-deploy/test-deploy/client
